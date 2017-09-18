@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">WeatherDay</string>
+
+    <string name="change_city">City</string>
+
+    <string name="open_weather_maps_app_id">aca5abed8d3c55584d90c757bcf554bc</string>
+    <string name="place_not_found">Информация не найдена.</string>
+
+</resources>
