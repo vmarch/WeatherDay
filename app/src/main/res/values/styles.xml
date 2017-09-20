@@ -13,13 +13,27 @@
         <item name="android:typeface">monospace</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:gravity">center_horizontal</item>
+        <item name="android:layout_weight">1</item>
         <item name="android:layout_gravity">center_horizontal</item>
         <item name="android:background">@drawable/list_grad</item>
         <item name="android:layout_margin">3dp</item>
         <item name="android:paddingLeft">5dp</item>
         <item name="android:paddingRight">5dp</item>
 
+    </style>
+    <style name="CenterPartStyle" parent="MyTextStyle">
+        <item name="android:gravity">center_horizontal|center_vertical</item>
+        <item name="android:layout_gravity">center_vertical|center_horizontal</item>
+    </style>
+
+    <style name="LeftPartStyle" parent="MyTextStyle">
+        <item name="android:gravity">right|center_vertical</item>
+        <item name="android:layout_gravity">right</item>
+    </style>
+
+    <style name="RightPartStyle" parent="MyTextStyle">
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:layout_gravity">left</item>
     </style>
 
 </resources>

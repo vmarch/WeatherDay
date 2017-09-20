@@ -9,7 +9,7 @@
         android:id="@+id/image_fragment"
         android:name="devtolife.weatherday.fragments.ImageFragment"
         android:layout_width="match_parent"
-        android:layout_height="150dp" />
+        android:layout_height="205dp" />
 
     <fragment
         android:id="@+id/data_fragment"

@@ -46,13 +46,13 @@ public class DataFragment extends Fragment {
 
         myLocale = new Locale("bel", "BY");
         View rootView = inflater.inflate(R.layout.data_fragment, container, false);
-        dateField = (TextView) rootView.findViewById(R.id.textDate);
-        cityField = (TextView) rootView.findViewById(R.id.textCity);
-        temperField = (TextView) rootView.findViewById(R.id.textTemper);
-        cloudsField = (TextView) rootView.findViewById(R.id.textClouds);
-        humidityField = (TextView) rootView.findViewById(R.id.textHumidity);
-        pressureField = (TextView) rootView.findViewById(R.id.textPressure);
-        windField = (TextView) rootView.findViewById(R.id.textWind);
+        dateField = (TextView) rootView.findViewById(R.id.text_date_value);
+        cityField = (TextView) rootView.findViewById(R.id.text_city_value);
+        temperField = (TextView) rootView.findViewById(R.id.text_temper_value);
+        cloudsField = (TextView) rootView.findViewById(R.id.text_clouds_value);
+        humidityField = (TextView) rootView.findViewById(R.id.text_humidity_value);
+        pressureField = (TextView) rootView.findViewById(R.id.text_pressure_value);
+        windField = (TextView) rootView.findViewById(R.id.text_wind_value);
 
         return rootView;
     }
@@ -94,17 +94,17 @@ public class DataFragment extends Fragment {
             JSONObject main = json.getJSONObject("main");
             JSONObject wind = json.getJSONObject("wind");
 
-            setWeatherIcon(details.getInt("id"), curentTime);
+            setWeatherIcon(details.getInt("id"), dayTime);
 
             temperField.setText(String.format("%.2f", main.getDouble("temp")) + " ℃");
 
             cloudsField.setText(details.getString("description").toUpperCase(Locale.US) + "");
 
-            humidityField.setText("Humidity: " + main.getString("humidity") + "%");
-            pressureField.setText("Pressure: " + main.getString("pressure") + " hPa");
-            windField.setText("Wind: " + wind.getString("speed") + " m/c");
+            humidityField.setText(main.getString("humidity") + "%");
+            pressureField.setText(main.getString("pressure") + " hPa");
+            windField.setText(wind.getString("speed") + " m/c");
 
-            dateField.setText(new SimpleDateFormat("dd.MM").format(new Date()));
+            dateField.setText(new SimpleDateFormat("dd.MM.yyyy").format(new Date()));
 
         } catch (Exception e) {
             Log.e("SimpleWeather", "One or more fields not found in the JSON data");

@@ -12,15 +12,12 @@
     android:paddingLeft="3dp"
     android:paddingRight="3dp"
     android:paddingTop="3dp"
-
     android:weightSum="1">
-
 
     <ImageView
         android:id="@+id/imageWeather"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.30"
         app:srcCompat="@mipmap/ic_launcher" />
 
 </LinearLayout>
