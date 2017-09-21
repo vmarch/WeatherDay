@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
 
-    android:layout_marginBottom="5dp"
-    android:layout_marginLeft="5dp"
-    android:layout_marginRight="5dp"
+    android:layout_marginBottom="3dp"
+    android:layout_marginLeft="3dp"
+    android:layout_marginRight="3dp"
     android:background="@color/weather_background"
     android:orientation="vertical"
     android:paddingBottom="3dp"
     android:paddingLeft="3dp"
-    android:paddingRight="3dp">
+    android:paddingRight="3dp"
+    android:weightSum="1">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -18,10 +20,28 @@
         android:layout_gravity="center_horizontal"
         android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/text_city_value"
-            style="@style/CenterPartStyle"
-            android:text="City" />
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/text_city_value"
+                style="@style/LeftPartStyle"
+                android:text="City" />
+
+            <TextView
+                android:id="@+id/text_date_value"
+                style="@style/RightPartStyle"
+                android:text="Date" />
+
+        </TableRow>
+
+        <ImageView
+            android:id="@+id/image_weather"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center_vertical|center_horizontal"
+            app:srcCompat="@mipmap/ic_launcher" />
 
         <TextView
             android:id="@+id/text_temper_value"
@@ -38,25 +58,10 @@
 
     <TableLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-
-            <TextView
-                android:id="@+id/text_date"
-                style="@style/LeftPartStyle"
-                android:text="Date" />
-
-            <TextView
-                android:id="@+id/text_date_value"
-                style="@style/RightPartStyle"
-                android:text="Date" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
@@ -71,7 +76,7 @@
         </TableRow>
 
         <TableRow
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
@@ -86,7 +91,7 @@
         </TableRow>
 
         <TableRow
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
@@ -98,6 +103,7 @@
                 android:id="@+id/text_pressure_value"
                 style="@style/RightPartStyle"
                 android:text="Pressure" />
+
         </TableRow>
     </TableLayout>
 </LinearLayout>

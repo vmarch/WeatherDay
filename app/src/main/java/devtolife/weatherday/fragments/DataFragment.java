@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,8 +33,10 @@ public class DataFragment extends Fragment {
     public Locale myLocale;
     private int dayTime;
     private int curentTime;
-
+    private ImageView weatherIcon;
+    private int icon;
     Handler handler;
+
 
     public DataFragment() {
         handler = new Handler();
@@ -45,7 +48,9 @@ public class DataFragment extends Fragment {
         updateWeatherData(new CityPreference(getActivity()).getCity());
 
         myLocale = new Locale("bel", "BY");
+
         View rootView = inflater.inflate(R.layout.data_fragment, container, false);
+        weatherIcon = (ImageView) rootView.findViewById(R.id.image_weather);
         dateField = (TextView) rootView.findViewById(R.id.text_date_value);
         cityField = (TextView) rootView.findViewById(R.id.text_city_value);
         temperField = (TextView) rootView.findViewById(R.id.text_temper_value);
@@ -72,8 +77,9 @@ public class DataFragment extends Fragment {
                 } else {
                     handler.post(new Runnable() {
                         public void run() {
-                            renderWeather(json);
                             getCurrentDayTime(json);
+                            renderWeather(json);
+
 
                         }
                     });
@@ -88,7 +94,7 @@ public class DataFragment extends Fragment {
         try {
             cityField.setText(json.getString("name").toUpperCase(Locale.US) +
                     ", " +
-                    json.getJSONObject("sys").getString("country"));
+                    json.getJSONObject("sys").getString("country") + " |");
 
             JSONObject details = json.getJSONArray("weather").getJSONObject(0);
             JSONObject main = json.getJSONObject("main");
@@ -96,15 +102,13 @@ public class DataFragment extends Fragment {
 
             setWeatherIcon(details.getInt("id"), dayTime);
 
-            temperField.setText(String.format("%.2f", main.getDouble("temp")) + " ℃");
-
+            weatherIcon.setImageResource(icon);
+            temperField.setText(String.format("%.2f", main.getDouble("temp")) + "℃");
             cloudsField.setText(details.getString("description").toUpperCase(Locale.US) + "");
-
             humidityField.setText(main.getString("humidity") + "%");
             pressureField.setText(main.getString("pressure") + " hPa");
             windField.setText(wind.getString("speed") + " m/c");
-
-            dateField.setText(new SimpleDateFormat("dd.MM.yyyy").format(new Date()));
+            dateField.setText(new SimpleDateFormat("dd.MM").format(new Date()));
 
         } catch (Exception e) {
             Log.e("SimpleWeather", "One or more fields not found in the JSON data");
@@ -138,8 +142,7 @@ public class DataFragment extends Fragment {
 
     private void setWeatherIcon(int actualId, int daySun) {
         int id = actualId / 100;
-        int icon = R.drawable.clear_sky0;
-        if (id == 8) {
+               if (id == 8) {
             switch (actualId) {
                 case 800:
                     if (daySun == 0) {
@@ -174,70 +177,11 @@ public class DataFragment extends Fragment {
                     break;
             }
         } else if (id == 3) {
-            switch (actualId) {
-                case 300:
-                    if (daySun == 0) {
-                        icon = R.drawable.drizzle0;
-                    } else {
-                        icon = R.drawable.drizzle1;
-                    }
-                    break;
-                case 301:
-                    if (daySun == 0) {
-                        icon = R.drawable.drizzle0;
-                    } else {
-                        icon = R.drawable.drizzle1;
-                    }
-                    break;
-                case 302:
-                    if (daySun == 0) {
-                        icon = R.drawable.drizzle0;
-                    } else {
-                        icon = R.drawable.drizzle1;
-                    }
-                    break;
-                case 310:
-                    if (daySun == 0) {
-                        icon = R.drawable.drizzle0;
-                    } else {
-                        icon = R.drawable.drizzle1;
-                    }
-                    break;
-                case 311:
-                    if (daySun == 0) {
-                        icon = R.drawable.drizzle0;
-                    } else {
-                        icon = R.drawable.drizzle1;
-                    }
-                    break;
-                case 312:
-                    if (daySun == 0) {
-                        icon = R.drawable.drizzle0;
-                    } else {
-                        icon = R.drawable.drizzle1;
-                    }
-                    break;
-                case 313:
-                    if (daySun == 0) {
-                        icon = R.drawable.drizzle0;
-                    } else {
-                        icon = R.drawable.drizzle1;
-                    }
-                    break;
-                case 314:
-                    if (daySun == 0) {
-                        icon = R.drawable.drizzle0;
-                    } else {
-                        icon = R.drawable.drizzle1;
-                    }
-                    break;
-                case 321:
-                    if (daySun == 0) {
-                        icon = R.drawable.drizzle0;
-                    } else {
-                        icon = R.drawable.drizzle1;
-                    }
-                    break;
+
+            if (daySun == 0) {
+                icon = R.drawable.drizzle0;
+            } else {
+                icon = R.drawable.drizzle1;
             }
 
 //            300	light intensity drizzle	легка мряка
@@ -365,69 +309,20 @@ public class DataFragment extends Fragment {
 
             }
         } else if (id == 7) {
-            switch (actualId) {
-                case 701:
-                    if (daySun == 0) {
-                        icon = R.drawable.fog0;
-                    } else {
-                        icon = R.drawable.fog1;
-                    }
-                    break;
-                case 711:
-                    if (daySun == 0) {
-                        icon = R.drawable.fog0;
-                    } else {
-                        icon = R.drawable.fog1;
-                    }
-                    break;
-                case 721:
-                    if (daySun == 0) {
-                        icon = R.drawable.fog0;
-                    } else {
-                        icon = R.drawable.fog1;
-                    }
-                    break;
-                case 731:
-                    if (daySun == 0) {
-                        icon = R.drawable.fog0;
-                    } else {
-                        icon = R.drawable.fog1;
-                    }
-                    break;
-                case 741:
-                    if (daySun == 0) {
-                        icon = R.drawable.fog0;
-                    } else {
-                        icon = R.drawable.fog1;
-                    }
-                    break;
-                case 751:
-                    if (daySun == 0) {
-                        icon = R.drawable.fog0;
-                    } else {
-                        icon = R.drawable.fog1;
-                    }
-                    break;
-                case 761:
-                    if (daySun == 0) {
-                        icon = R.drawable.fog0;
-                    } else {
-                        icon = R.drawable.fog1;
-                    }
-                    break;
-                case 762:
-                    if (daySun == 0) {
-                        icon = R.drawable.fog0;
-                    } else {
-                        icon = R.drawable.fog1;
-                    }
-                    break;
-                case 771:
-                    icon = R.drawable.storm;
-                    break;
-                case 781:
-                    icon = R.drawable.tornado;
-                    break;
+
+            if (actualId >= 701 && actualId <= 762) {
+                if (daySun == 0) {
+                    icon = R.drawable.fog0;
+                } else {
+                    icon = R.drawable.fog1;
+
+                }
+            } else if (actualId == 771) {
+                icon = R.drawable.storm;
+            } else if (actualId == 781) {
+
+                icon = R.drawable.tornado;
+            }
 
 //            701	mist	туман
 //            711	smoke	дим
@@ -440,7 +335,6 @@ public class DataFragment extends Fragment {
 //            771	squalls	шквал
 //            781	tornado	торнадо
 
-            }
         } else if (id == 9) {
             switch (actualId) {
                 case 900:
@@ -536,7 +430,6 @@ public class DataFragment extends Fragment {
                 case 962:
                     icon = R.drawable.storm;
                     break;
-
 //            900	tornado	торнадо
 //            901	tropical storm	тропічний шторм
 //            902	hurricane	ураган
@@ -558,8 +451,7 @@ public class DataFragment extends Fragment {
 //            962	hurricane	ураган
             }
         }
-        ImageFragment.weatherIcon.setImageResource(icon);
-    }
+            }
 
     public void changeCity(String city) {
         updateWeatherData(city);
