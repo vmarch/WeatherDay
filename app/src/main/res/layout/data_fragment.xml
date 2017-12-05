@@ -15,7 +15,7 @@
     android:weightSum="1">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:orientation="vertical">
@@ -41,13 +41,15 @@
             android:layout_width="150dp"
             android:layout_height="150dp"
             android:layout_gravity="center_vertical|center_horizontal"
-            app:srcCompat="@mipmap/ic_launcher" />
+            app:srcCompat="@drawable/unnone" />
 
         <TextView
             android:id="@+id/text_temper_value"
             style="@style/CenterPartStyle"
             android:text="Temp"
-            android:textSize="48sp" />
+            android:textSize="48sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
 
 
         <TextView
@@ -106,4 +108,21 @@
 
         </TableRow>
     </TableLayout>
+
+    <EditText
+        android:id="@+id/edit_city"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_vertical|center_horizontal"
+        android:hint="Enter the City"
+        android:text="" />
+
+    <Button
+        android:id="@+id/btn_check_weather"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:padding="5dp"
+        android:text="Check weather" />
 </LinearLayout>
