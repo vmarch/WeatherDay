@@ -44,7 +44,8 @@ public class DataFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        updateWeatherData(new CityPreference(getActivity()).getCity());
+
+        getOldCityWeatherData();
 
         myLocale = new Locale("bel", "BY");
 
@@ -61,6 +62,23 @@ public class DataFragment extends Fragment {
         return rootView;
     }
 
+    private void getOldCityWeatherData() {
+        final String city =  new CityPreference(getActivity()).getCity();
+        new Thread() {
+            public void run() {
+                final JSONObject json = RemoteFetch.getJSON(getActivity(), city);
+
+                handler.post(new Runnable() {
+                    public void run() {
+                        getCurrentDayTime(json);
+                        renderWeather(json);
+
+                    }
+                });
+            }
+        }.start();
+    }
+
     private void updateWeatherData(final String city) {
         new Thread() {
             public void run() {
@@ -69,7 +87,7 @@ public class DataFragment extends Fragment {
                     handler.post(new Runnable() {
                         public void run() {
                             Toast.makeText(getActivity(),
-                                    getActivity().getString(R.string.place_not_found),
+                                    "\"" + city + "\"" + " not found.",
                                     Toast.LENGTH_LONG).show();
                         }
                     });
@@ -78,7 +96,6 @@ public class DataFragment extends Fragment {
                         public void run() {
                             getCurrentDayTime(json);
                             renderWeather(json);
-
 
                         }
                     });
@@ -92,8 +109,7 @@ public class DataFragment extends Fragment {
     private void renderWeather(JSONObject json) {
         try {
             cityField.setText(json.getString("name").toUpperCase(Locale.US) +
-                    ", " +
-                    json.getJSONObject("sys").getString("country") + " |");
+                    ", " + json.getJSONObject("sys").getString("country") + " |");
 
             JSONObject details = json.getJSONArray("weather").getJSONObject(0);
             JSONObject main = json.getJSONObject("main");
@@ -137,7 +153,6 @@ public class DataFragment extends Fragment {
             dayTime = 1;
         }
     }
-
 
     private void setWeatherIcon(int actualId, int daySun) {
         int id = actualId / 100;
@@ -228,6 +243,7 @@ public class DataFragment extends Fragment {
                 case 616:
                     icon = R.drawable.snow_rain;
                     break;
+
                 case 620:
                 case 621:
                 case 622:

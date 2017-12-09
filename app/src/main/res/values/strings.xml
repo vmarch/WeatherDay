@@ -1,12 +1,9 @@
 <resources>
     <string name="app_name">WeatherDay</string>
-
     <string name="change_city">City</string>
-
     <string name="open_weather_maps_app_id">aca5abed8d3c55584d90c757bcf554bc</string>
-    <string name="place_not_found">Information not found.</string>
+    <string name="place_not_found"> not found.</string>
     <string name="action_policy">Privacy Policy</string>
-
     <string name="open_privacy">Open Privacy</string>
     <string name="privacy_short">Using WeatherDay you accept terms.</string>
 
