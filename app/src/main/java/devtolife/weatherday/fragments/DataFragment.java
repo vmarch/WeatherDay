@@ -71,7 +71,7 @@ public class DataFragment extends Fragment {
                 handler.post(new Runnable() {
                     public void run() {
                         getCurrentDayTime(json);
-                        renderWeather(json);
+                        renderWeather(json,city);
 
                     }
                 });
@@ -79,7 +79,8 @@ public class DataFragment extends Fragment {
         }.start();
     }
 
-    private void updateWeatherData(final String city) {
+    public void updateWeatherData(final String city) {
+
         new Thread() {
             public void run() {
                 final JSONObject json = RemoteFetch.getJSON(getActivity(), city);
@@ -89,16 +90,18 @@ public class DataFragment extends Fragment {
                             Toast.makeText(getActivity(),
                                     "\"" + city + "\"" + " not found.",
                                     Toast.LENGTH_LONG).show();
-                        }
+                                                    }
                     });
+
                 } else {
                     handler.post(new Runnable() {
                         public void run() {
                             getCurrentDayTime(json);
-                            renderWeather(json);
+                            renderWeather(json, city);
 
                         }
                     });
+
                 }
             }
 
@@ -106,7 +109,12 @@ public class DataFragment extends Fragment {
     }
 
 
-    private void renderWeather(JSONObject json) {
+    private void renderWeather(JSONObject json, String newCity) {
+        CityPreference cityPreference = new CityPreference(getActivity());
+        if (!cityPreference.getCity().equals(newCity)){
+            cityPreference.setCity(newCity);
+        }
+
         try {
             cityField.setText(json.getString("name").toUpperCase(Locale.US) +
                     ", " + json.getJSONObject("sys").getString("country") + " |");
@@ -313,11 +321,6 @@ public class DataFragment extends Fragment {
             }
         }
     }
-
-    public void changeCityFragm(String city) {
-        updateWeatherData(city);
-    }
-
 
 }
 

@@ -1,5 +1,6 @@
 package devtolife.weatherday;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -22,11 +24,15 @@ public class WeatherActivity extends AppCompatActivity {
     CityPreference cityPreference;
     private String city;
     String newCity;
+    DataFragment wf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_layout);
+
+        wf = (DataFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.data_fragment);
 
         cityPreference = new CityPreference(this);
 
@@ -42,12 +48,14 @@ public class WeatherActivity extends AppCompatActivity {
 
         btnCheckWeather = findViewById(R.id.btn_check_weather);
         btnCheckWeather.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
-                newCity = editCity.getText().toString();
+
+                newCity = getNewCity();
+
                 if (!newCity.equals("")) {
                     changeCity(newCity);
-                    editCity.setText("");
                 }
             }
         });
@@ -56,31 +64,33 @@ public class WeatherActivity extends AppCompatActivity {
         editCity.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
 
-                String newCity = editCity.getText().toString();
+                newCity = getNewCity();
 
-                if (!newCity.equals("")) {
 
+                if (!newCity.equals("") && actionId == EditorInfo.IME_ACTION_GO) {
                     changeCity(newCity);
-                    editCity.setText("");
-
-                    if (event != null && event.getKeyCode() == android.view.KeyEvent.KEYCODE_ENTER) {
-                        changeCity(newCity);
-                        editCity.setText("");
-                        return true;
-                    } else if (actionId == EditorInfo.IME_ACTION_GO) {
-                        changeCity(newCity);
-                        editCity.setText("");
-                        return true;
-                    } else if (actionId == EditorInfo.IME_ACTION_DONE) {
-                        changeCity(newCity);
-                        editCity.setText("");
-                        return true;
-                    }
+                    return true;
+                } else if (!newCity.equals("") && actionId == EditorInfo.IME_ACTION_DONE) {
+                    changeCity(newCity);
+                    return true;
                 }
                 return false;
             }
         });
 
+    }
+
+
+    public void hideSoftKeyboard() {
+        InputMethodManager imm = (InputMethodManager) getSystemService(
+                Context.INPUT_METHOD_SERVICE);
+        if (imm != null) {
+            imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        }
+    }
+
+    public String getNewCity() {
+        return editCity.getText().toString();
     }
 
     @Override
@@ -99,13 +109,11 @@ public class WeatherActivity extends AppCompatActivity {
             return true;
         }
         return false;
-
     }
 
     public void changeCity(String city) {
-        DataFragment wf = (DataFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.data_fragment);
-        wf.changeCityFragm(city);
-        cityPreference.setCity(city);
+        editCity.setText("");
+        hideSoftKeyboard();
+        wf.updateWeatherData(city);
     }
 }
