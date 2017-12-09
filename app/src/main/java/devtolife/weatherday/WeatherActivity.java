@@ -65,19 +65,23 @@ public class WeatherActivity extends AppCompatActivity {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
 
                 newCity = getNewCity();
+                if (!newCity.equals("")) {
 
+                    if (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
+                        changeCity(newCity);
+                        return true;
+                    } else if (!newCity.equals("") && actionId == EditorInfo.IME_ACTION_GO) {
+                        changeCity(newCity);
+                        return true;
+                    } else if (!newCity.equals("") && actionId == EditorInfo.IME_ACTION_DONE) {
+                        changeCity(newCity);
+                        return true;
+                    }
 
-                if (!newCity.equals("") && actionId == EditorInfo.IME_ACTION_GO) {
-                    changeCity(newCity);
-                    return true;
-                } else if (!newCity.equals("") && actionId == EditorInfo.IME_ACTION_DONE) {
-                    changeCity(newCity);
-                    return true;
                 }
                 return false;
             }
         });
-
     }
 
 
