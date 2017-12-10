@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.InputType;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -14,6 +15,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
 
 import devtolife.weatherday.fragments.DataFragment;
 import devtolife.weatherday.menu_activities.PrivacyPolicy;
@@ -29,8 +31,12 @@ public class WeatherActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_layout);
+
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
 
         wf = (DataFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.data_fragment);
@@ -85,7 +91,6 @@ public class WeatherActivity extends AppCompatActivity {
         });
     }
 
-
     public void hideSoftKeyboard() {
         InputMethodManager imm = (InputMethodManager) getSystemService(
                 Context.INPUT_METHOD_SERVICE);
@@ -104,6 +109,7 @@ public class WeatherActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent;
@@ -118,7 +124,7 @@ public class WeatherActivity extends AppCompatActivity {
             startActivity(intent);
             return true;
         }
-        return false;
+        return super.onOptionsItemSelected(item);
     }
 
     public void changeCity(String city) {

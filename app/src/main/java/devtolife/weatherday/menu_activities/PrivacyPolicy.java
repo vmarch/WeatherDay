@@ -25,6 +25,9 @@ public class PrivacyPolicy extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.privacy);
 
+        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+
           try {
             getSupportActionBar().setTitle("Policy");
         } catch (Exception e) {
