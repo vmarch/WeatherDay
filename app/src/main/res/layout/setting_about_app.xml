@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/setting_about"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/list_grad"
+    android:orientation="vertical"
+    android:weightSum="1"
+    tools:context="devtolife.weatherday.menu_activities.SettingAboutAppActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="top"
+        android:orientation="vertical"
+        tools:context="devtolife.weatherday.menu_activities.SettingAboutAppActivity">
+
+        <TextView
+            android:id="@+id/name_of_app"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center_vertical|center_horizontal"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/about_row_name"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/text_company"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|left|center_horizontal"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/about_row_company"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/text_developer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center_vertical|center_horizontal"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/about_row_autor"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/version_of_app"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center_horizontal"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="5dp"
+            android:text="@string/about_row_version"
+            android:textSize="20sp"/>
+
+    </LinearLayout>
+</LinearLayout>
+

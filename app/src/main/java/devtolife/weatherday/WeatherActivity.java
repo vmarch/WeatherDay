@@ -16,7 +16,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import devtolife.weatherday.fragments.DataFragment;
-import devtolife.weatherday.privacy_policy.PrivacyPolicy;
+import devtolife.weatherday.menu_activities.PrivacyPolicy;
+import devtolife.weatherday.menu_activities.SettingAboutAppActivity;
 
 public class WeatherActivity extends AppCompatActivity {
     EditText editCity;
@@ -109,6 +110,11 @@ public class WeatherActivity extends AppCompatActivity {
 
         if (item.getItemId() == R.id.action_policy) {
             intent = new Intent(this, PrivacyPolicy.class);
+            startActivity(intent);
+            return true;
+
+        }else if (item.getItemId() == R.id.action_about_app) {
+            intent = new Intent(this, SettingAboutAppActivity.class);
             startActivity(intent);
             return true;
         }
