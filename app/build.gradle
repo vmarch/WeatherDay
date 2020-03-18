@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 29
-    buildToolsVersion '28.0.3'
+    buildToolsVersion '29.0.3'
     defaultConfig {
         applicationId "devtolife.weatherday"
         minSdkVersion 16
@@ -21,6 +21,11 @@ android {
     }
 }
 
+android {
+    defaultConfig {
+        vectorDrawables.useSupportLibrary = true
+    }
+}
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {

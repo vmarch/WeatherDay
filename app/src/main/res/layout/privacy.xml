@@ -1,23 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context="devtolife.weatherday.menu_activities.PrivacyPolicy">
 
-    <TextView
-        android:id="@+id/textViewPrivacy"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/my_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/privacy_short"
-        android:textSize="18sp" />
+        android:layout_height="?attr/actionBarSize"
+        android:titleTextColor="@android:color/white"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
 
-    <Button
-        android:id="@+id/btn_privacy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center"
-        android:text="@string/open_privacy"
-        android:textSize="18sp" />
+    <LinearLayout
+        android:id="@+id/privacy"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="top"
+        android:orientation="vertical"
+        tools:context="devtolife.weatherday.menu_activities.PrivacyPolicy"
+        android:background="@color/gradient_start">
+
+        <TextView
+            android:id="@+id/textViewPrivacyFull"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="500"
+            android:padding="10dp"
+            android:scrollbarStyle="outsideInset"
+            android:text=""
+            android:textSize="18sp" />
+
+    </LinearLayout>
 
 </LinearLayout>
