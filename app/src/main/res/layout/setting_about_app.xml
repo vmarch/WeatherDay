@@ -10,7 +10,7 @@
     android:weightSum="1"
     tools:context="devtolife.weatherday.menu_activities.SettingAboutAppActivity">
 
-    <android.support.v7.widget.Toolbar
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/my_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -58,7 +58,7 @@
             android:layout_marginBottom="5dp"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="5dp"
-            android:text="@string/about_row_autor"
+            android:text="@string/about_row_author"
             android:textSize="20sp"/>
 
         <TextView
