@@ -2,7 +2,6 @@ package devtolife.weatherday.fragments;
 
 import android.os.Bundle;
 import android.os.Handler;
-import androidx.fragment.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.fragment.app.Fragment;
 
 import org.json.JSONObject;
 
@@ -23,19 +24,18 @@ import devtolife.weatherday.RemoteFetch;
 
 public class DataFragment extends Fragment {
 
-    TextView dateField;
-    TextView cityField;
-    TextView temperField;
-    TextView cloudsField;
-    TextView pressureField;
-    TextView windField;
-    TextView humidityField;
-    public Locale myLocale;
+    private TextView dateField;
+    private TextView cityField;
+    private TextView temperField;
+    private TextView cloudsField;
+    private TextView pressureField;
+    private TextView windField;
+    private TextView humidityField;
+    private Locale myLocale;
     private int dayTime;
     private ImageView weatherIcon;
     private int icon;
-    Handler handler;
-
+    private Handler handler;
 
     public DataFragment() {
         handler = new Handler();
@@ -63,7 +63,7 @@ public class DataFragment extends Fragment {
     }
 
     private void getOldCityWeatherData() {
-        final String city =  new CityPreference(getActivity()).getCity();
+        final String city = new CityPreference(getActivity()).getCity();
         new Thread() {
             public void run() {
                 final JSONObject json = RemoteFetch.getJSON(getActivity(), city);
@@ -71,7 +71,7 @@ public class DataFragment extends Fragment {
                 handler.post(new Runnable() {
                     public void run() {
                         getCurrentDayTime(json);
-                        renderWeather(json,city);
+                        renderWeather(json, city);
 
                     }
                 });
@@ -90,7 +90,7 @@ public class DataFragment extends Fragment {
                             Toast.makeText(getActivity(),
                                     "\"" + city + "\"" + " not found.",
                                     Toast.LENGTH_LONG).show();
-                                                    }
+                        }
                     });
 
                 } else {
@@ -111,7 +111,7 @@ public class DataFragment extends Fragment {
 
     private void renderWeather(JSONObject json, String newCity) {
         CityPreference cityPreference = new CityPreference(getActivity());
-        if (!cityPreference.getCity().equals(newCity)){
+        if (!cityPreference.getCity().equals(newCity)) {
             cityPreference.setCity(newCity);
         }
 
@@ -126,7 +126,7 @@ public class DataFragment extends Fragment {
             setWeatherIcon(details.getInt("id"), dayTime);
 
             weatherIcon.setImageResource(icon);
-            temperField.setText(String.format("%.2f", main.getDouble("temp")) + "℃");
+            temperField.setText(String.format("%.1f", main.getDouble("temp")) + "℃");
             cloudsField.setText(details.getString("description").toUpperCase(Locale.US) + "");
             humidityField.setText(main.getString("humidity") + "%");
             pressureField.setText(main.getString("pressure") + " hPa");

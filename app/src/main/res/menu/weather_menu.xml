@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     tools:context=".WeatherActivity">
 
     <item
         android:id="@+id/action_policy"
         android:orderInCategory="100"
         android:title="@string/action_policy"
-        app:showAsAction="never"/>
+        app:showAsAction="never" />
 
     <item
         android:id="@+id/action_about_app"
         android:orderInCategory="100"
         android:title="@string/action_about_app"
         app:showAsAction="never" />
-
 
 </menu>
