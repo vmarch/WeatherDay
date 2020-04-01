@@ -19,7 +19,8 @@ import androidx.appcompat.widget.Toolbar;
 
 import devtolife.weatherday.fragments.DataFragment;
 import devtolife.weatherday.menu_activities.PrivacyPolicy;
-import devtolife.weatherday.menu_activities.SettingAboutAppActivity;
+import devtolife.weatherday.menu_activities.AboutAppActivity;
+import devtolife.weatherday.menu_activities.SettingsAppActivity;
 
 public class WeatherActivity extends AppCompatActivity {
     EditText editCity;
@@ -116,7 +117,12 @@ public class WeatherActivity extends AppCompatActivity {
             return true;
 
         } else if (item.getItemId() == R.id.action_about_app) {
-            intent = new Intent(this, SettingAboutAppActivity.class);
+            intent = new Intent(this, AboutAppActivity.class);
+            startActivity(intent);
+            return true;
+
+        }else if (item.getItemId() == R.id.action_settings_app) {
+            intent = new Intent(this, SettingsAppActivity.class);
             startActivity(intent);
             return true;
         }

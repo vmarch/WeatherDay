@@ -1,15 +1,12 @@
 <resources>
     <string name="app_name">Weather Day</string>
-    <string name="change_city">City</string>
+    <string name="change_city">Місто</string>
     <string name="open_weather_maps_app_id">aca5abed8d3c55584d90c757bcf554bc</string>
     <string name="place_not_found"> not found.</string>
     <string name="action_policy">Privacy Policy</string>
-    <string name="action_about_app">About App</string>
-    <string name="action_settings_app">Settings</string>
+    <string name="action_about_app">Про додаток</string>
 
-
-    <string name="title_activity_settings">Settings</string>
-
+    <string name="title_activity_settings">Налаштування</string>
 
     <string name="open_privacy">Open Privacy</string>
     <string name="privacy_short">Using WeatherDay you accept terms.</string>
@@ -63,7 +60,7 @@
     ]]></string>
 
     <string name="about_row_name">Name: Weather Day</string>
-    <string name="about_row_author">Developer: V.March</string>
+    <string name="about_row_author">Розробник: V.March</string>
     <string name="about_row_company">Company: dev_to_life</string>
     <string name="about_row_version">Version of APP: 1.1</string>
 
@@ -72,5 +69,6 @@
     <string name="string_menu_rus">RUS</string>
 
     <string name="context_description_arrow_back">Go back</string>
-    <string name="text_view_field_language">Language:</string>
+    <string name="action_settings_app">Налаштування</string>
+    <string name="text_view_field_language">Мова:</string>
 </resources>

@@ -20,7 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".menu_activities.PrivacyPolicy" />
-        <activity android:name=".menu_activities.SettingAboutAppActivity" />
+        <activity android:name=".menu_activities.AboutAppActivity" />
+        <activity android:name=".menu_activities.SettingsAppActivity" />
     </application>
 
 </manifest>

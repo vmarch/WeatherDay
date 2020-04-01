@@ -1,6 +1,8 @@
 package devtolife.weatherday.menu_activities;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.TextView;
 
@@ -11,20 +13,21 @@ import androidx.appcompat.widget.Toolbar;
 import devtolife.weatherday.BuildConfig;
 import devtolife.weatherday.R;
 
-public class SettingAboutAppActivity extends AppCompatActivity {
-    //    SharedPreferences mSharedPref;
+public class AboutAppActivity extends AppCompatActivity {
+        SharedPreferences mSharedPref;
+
     private TextView tv_version;
     private Toolbar myToolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-//        mSharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        mSharedPref = PreferenceManager.getDefaultSharedPreferences(this);
 //        setTheme(mSharedPref.getInt("mytheme", 0));
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.setting_about_app);
+        setContentView(R.layout.activity_about_app_);
 
-        myToolbar = findViewById(R.id.my_toolbar_settings);
+        myToolbar = findViewById(R.id.my_toolbar_about_app);
         setupToolbar();
 
         String versionName = BuildConfig.VERSION_NAME;
