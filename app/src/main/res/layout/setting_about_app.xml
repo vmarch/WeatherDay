@@ -14,11 +14,11 @@
         android:id="@+id/my_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:titleTextColor="@android:color/white"
         android:background="@color/colorPrimary"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+        android:titleTextColor="@android:color/white"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
 
     <LinearLayout
@@ -33,44 +33,44 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left|center_vertical|center_horizontal"
-            android:layout_marginBottom="5dp"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="15dp"
+            android:layout_marginBottom="5dp"
             android:text="@string/about_row_name"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/text_company"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="top|left|center_horizontal"
-            android:layout_marginBottom="5dp"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:text="@string/about_row_company"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/text_developer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left|center_vertical|center_horizontal"
-            android:layout_marginBottom="5dp"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:text="@string/about_row_author"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/version_of_app"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left|center_horizontal"
-            android:layout_marginBottom="5dp"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
             android:text="@string/about_row_version"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
 
     </LinearLayout>
 </LinearLayout>

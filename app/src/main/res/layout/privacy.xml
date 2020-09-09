@@ -11,20 +11,20 @@
         android:id="@+id/my_toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:titleTextColor="@android:color/white"
         android:background="@color/colorPrimary"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"/>
+        android:titleTextColor="@android:color/white"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
     <LinearLayout
         android:id="@+id/privacy"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/gradient_start"
         android:gravity="top"
         android:orientation="vertical"
-        tools:context="devtolife.weatherday.menu_activities.PrivacyPolicy"
-        android:background="@color/gradient_start">
+        tools:context="devtolife.weatherday.menu_activities.PrivacyPolicy">
 
         <TextView
             android:id="@+id/textViewPrivacyFull"

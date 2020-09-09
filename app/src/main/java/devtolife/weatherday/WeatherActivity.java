@@ -3,8 +3,6 @@ package devtolife.weatherday;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import android.text.InputType;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -16,6 +14,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import devtolife.weatherday.fragments.DataFragment;
 import devtolife.weatherday.menu_activities.PrivacyPolicy;
@@ -35,7 +35,7 @@ public class WeatherActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_layout);
 
-        Toolbar myToolbar = (Toolbar) findViewById(R.id.my_toolbar);
+        Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
 
         wf = (DataFragment) getSupportFragmentManager()
@@ -119,7 +119,7 @@ public class WeatherActivity extends AppCompatActivity {
             startActivity(intent);
             return true;
 
-        }else if (item.getItemId() == R.id.action_about_app) {
+        } else if (item.getItemId() == R.id.action_about_app) {
             intent = new Intent(this, SettingAboutAppActivity.class);
             startActivity(intent);
             return true;
