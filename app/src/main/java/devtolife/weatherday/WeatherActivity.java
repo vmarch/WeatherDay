@@ -18,13 +18,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import devtolife.weatherday.fragments.DataFragment;
+import devtolife.weatherday.menu_activities.AboutAppActivity;
 import devtolife.weatherday.menu_activities.PrivacyPolicy;
-import devtolife.weatherday.menu_activities.SettingAboutAppActivity;
+import devtolife.weatherday.menu_activities.SettingsActivity;
 
 public class WeatherActivity extends AppCompatActivity {
     EditText editCity;
     Button btnCheckWeather;
-    CityPreference cityPreference;
+    MyPreference myPreference;
     private String city;
     String newCity;
     DataFragment wf;
@@ -41,12 +42,12 @@ public class WeatherActivity extends AppCompatActivity {
         wf = (DataFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.data_fragment);
 
-        cityPreference = new CityPreference(this);
+        myPreference = new MyPreference(this);
 
-        city = cityPreference.getCity();
+        city = myPreference.getCity();
 
         if (city.equals("")) {
-            cityPreference.setCity("Kiev");
+            myPreference.setCity("Kiev");
         }
 
 
@@ -120,10 +121,15 @@ public class WeatherActivity extends AppCompatActivity {
             return true;
 
         } else if (item.getItemId() == R.id.action_about_app) {
-            intent = new Intent(this, SettingAboutAppActivity.class);
+            intent = new Intent(this, AboutAppActivity.class);
+            startActivity(intent);
+            return true;
+        } else if (item.getItemId() == R.id.action_settings) {
+            intent = new Intent(this, SettingsActivity.class);
             startActivity(intent);
             return true;
         }
+
         return super.onOptionsItemSelected(item);
     }
 

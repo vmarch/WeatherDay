@@ -18,7 +18,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import devtolife.weatherday.CityPreference;
+import devtolife.weatherday.MyPreference;
 import devtolife.weatherday.R;
 import devtolife.weatherday.RemoteFetch;
 
@@ -63,7 +63,7 @@ public class DataFragment extends Fragment {
     }
 
     private void getOldCityWeatherData() {
-        final String city = new CityPreference(getActivity()).getCity();
+        final String city = new MyPreference(getActivity()).getCity();
         new Thread() {
             public void run() {
                 final JSONObject json = RemoteFetch.getJSON(getActivity(), city);
@@ -110,7 +110,7 @@ public class DataFragment extends Fragment {
 
 
     private void renderWeather(JSONObject json, String newCity) {
-        CityPreference cityPreference = new CityPreference(getActivity());
+        MyPreference cityPreference = new MyPreference(getActivity());
         if (!cityPreference.getCity().equals(newCity)) {
             cityPreference.setCity(newCity);
         }

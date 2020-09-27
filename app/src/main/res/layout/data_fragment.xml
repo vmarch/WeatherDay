@@ -28,12 +28,12 @@
             <TextView
                 android:id="@+id/text_city_value"
                 style="@style/LeftPartStyle"
-                android:text="City" />
+                android:text="@string/name_field_city" />
 
             <TextView
                 android:id="@+id/text_date_value"
                 style="@style/RightPartStyle"
-                android:text="Date" />
+                android:text="@string/name_field_date" />
 
         </TableRow>
 
@@ -49,14 +49,14 @@
             style="@style/CenterPartStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Temp"
+            android:text="@string/name_field_temp"
             android:textSize="48sp" />
 
 
         <TextView
             android:id="@+id/text_clouds_value"
             style="@style/CenterPartStyle"
-            android:text="Clouds" />
+            android:text="@string/name_field_clouds" />
     </LinearLayout>
 
     <TableLayout
@@ -70,12 +70,12 @@
             <TextView
                 android:id="@+id/text_humidity"
                 style="@style/LeftPartStyle"
-                android:text="Humidity" />
+                android:text="@string/name_field_humidity" />
 
             <TextView
                 android:id="@+id/text_humidity_value"
                 style="@style/RightPartStyle"
-                android:text="Humidity" />
+                android:text="" />
         </TableRow>
 
         <TableRow
@@ -85,12 +85,12 @@
             <TextView
                 android:id="@+id/text_wind"
                 style="@style/LeftPartStyle"
-                android:text="Wind" />
+                android:text="@string/name_field_wind" />
 
             <TextView
                 android:id="@+id/text_wind_value"
                 style="@style/RightPartStyle"
-                android:text="Wind" />
+                android:text="" />
         </TableRow>
 
         <TableRow
@@ -100,12 +100,12 @@
             <TextView
                 android:id="@+id/text_pressure"
                 style="@style/LeftPartStyle"
-                android:text="Pressure" />
+                android:text="@string/name_field_pressure" />
 
             <TextView
                 android:id="@+id/text_pressure_value"
                 style="@style/RightPartStyle"
-                android:text="Pressure" />
+                android:text="" />
 
         </TableRow>
     </TableLayout>
@@ -122,8 +122,9 @@
             android:layout_height="wrap_content"
             android:background="#00000000"
             android:gravity="center_horizontal"
-            android:hint="Enter the City"
-            android:text="" />
+            android:hint="@string/edit_text_city"
+            android:text=""
+            android:autofillHints="@string/edit_text_city" />
 
         <Button
             android:id="@+id/btn_check_weather"
@@ -131,7 +132,7 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:background="@color/btn_background"
-            android:text="Update"
+            android:text="@string/btn_update"
             android:textAppearance="@style/TextAppearance.AppCompat" />
 
     </LinearLayout>

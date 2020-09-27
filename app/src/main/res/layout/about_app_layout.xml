@@ -26,10 +26,10 @@
         android:layout_height="match_parent"
         android:gravity="top"
         android:orientation="vertical"
-        tools:context="devtolife.weatherday.menu_activities.SettingAboutAppActivity">
+        tools:context="devtolife.weatherday.menu_activities.AboutAppActivity">
 
         <TextView
-            android:id="@+id/name_of_app"
+            android:id="@+id/name_field_languages"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left|center_vertical|center_horizontal"

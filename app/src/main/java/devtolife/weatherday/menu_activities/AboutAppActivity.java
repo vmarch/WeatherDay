@@ -1,37 +1,52 @@
 package devtolife.weatherday.menu_activities;
 
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import devtolife.weatherday.BuildConfig;
 import devtolife.weatherday.R;
 
-public class SettingAboutAppActivity extends AppCompatActivity {
+public class AboutAppActivity extends AppCompatActivity {
     SharedPreferences mSharedPref;
     TextView tv_version;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        mSharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-        setTheme(mSharedPref.getInt("mytheme", 0));
+//        mSharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+//        setTheme(mSharedPref.getInt("mytheme", 0));
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.setting_about_app);
+        setContentView(R.layout.about_app_layout);
 
         Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
+
+
+        myToolbar.setNavigationIcon(R.drawable.outline_arrow_back_black_24);
+        myToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         try {
             getSupportActionBar().setTitle("About Application");
         } catch (Exception e) {
         }
 
-        String versionName = BuildConfig.VERSION_NAME;
+        String versionName = null;
+        try {
+            versionName = this.getPackageManager().getPackageInfo(this.getPackageName(), 0).versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
 
         tv_version = findViewById(R.id.version_of_app);
         tv_version.setText("Version of APP: " + versionName);

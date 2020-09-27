@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="action_settings">Настройки</string>
+    <string name="settings_row_name_language">Язык:</string>
+    <string name="change_city">Город</string>
+    <string name="settings_row_hint_language">Выберите язык</string>
+    <string name="place_not_found">Не найдено</string>
+    <string name="action_policy">Политика конфиденциальности</string>
+    <string name="action_about_app">О приложении</string>
+    <string name="privacy_full_eng"><![CDATA[     <p align="justify"><b>Добро пожаловать в Политику конфиденциальности мобильного приложения <a     href="https://play.google.com/store/apps/details?id=devtolife.weatherday">“Weather Day”</a></b><br> 	<br>     Последнее изменение политики конфиденциальности: 10 декабря 2017.<br> 	<br>     Мы не собираем никакой конфиденциальной информации.<br>     <br>     Вы можете использовать приложение "Weather Day" на ваше усмотрение.<br> <br>  Наша Политика конфиденциальности может меняться время от времени.     Мы не уменьшим ваши права в соответствии с настоящей Политикой конфиденциальности     без вашего явного согласия.<br> <br> Мы публикуем все изменения политики конфиденциальности в приложенни при обновлении. ]]></string>
+    <string name="btn_update">Обновить</string>
+    <string name="edit_text_city">Введите город</string>
+    <string name="name_field_pressure">Давление</string>
+    <string name="name_field_humidity">Влажность</string>
+    <string name="name_field_wind">Ветер</string>
+    <string name="name_field_clouds">Облачность</string>
+    <string name="name_field_temp">Темп</string>
+    <string name="name_field_date">Дата</string>
+    <string name="name_field_city">Город</string>
+</resources>
