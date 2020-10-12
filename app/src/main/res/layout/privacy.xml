@@ -8,7 +8,7 @@
     tools:context="devtolife.weatherday.menu_activities.PrivacyPolicy">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/my_toolbar"
+        android:id="@+id/my_toolbar_privacy"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorPrimary"

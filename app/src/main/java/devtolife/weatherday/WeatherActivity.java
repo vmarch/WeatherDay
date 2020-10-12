@@ -36,7 +36,7 @@ public class WeatherActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_layout);
 
-        Toolbar myToolbar = findViewById(R.id.my_toolbar);
+        Toolbar myToolbar = findViewById(R.id.my_toolbar_main);
         setSupportActionBar(myToolbar);
 
         wf = (DataFragment) getSupportFragmentManager()
@@ -50,7 +50,6 @@ public class WeatherActivity extends AppCompatActivity {
             myPreference.setCity("Kiev");
         }
 
-
         editCity = findViewById(R.id.edit_city);
         editCity.setInputType(InputType.TYPE_CLASS_TEXT);
 
@@ -63,11 +62,10 @@ public class WeatherActivity extends AppCompatActivity {
                 newCity = getNewCity();
 
                 if (!newCity.equals("")) {
-                    changeCity(newCity);
+                    updateWeatherData(newCity);
                 }
             }
         });
-
 
         editCity.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -76,16 +74,15 @@ public class WeatherActivity extends AppCompatActivity {
                 if (!newCity.equals("")) {
 
                     if (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER) {
-                        changeCity(newCity);
+                        updateWeatherData(newCity);
                         return true;
                     } else if (!newCity.equals("") && actionId == EditorInfo.IME_ACTION_GO) {
-                        changeCity(newCity);
+                        updateWeatherData(newCity);
                         return true;
                     } else if (!newCity.equals("") && actionId == EditorInfo.IME_ACTION_DONE) {
-                        changeCity(newCity);
+                        updateWeatherData(newCity);
                         return true;
                     }
-
                 }
                 return false;
             }
@@ -110,7 +107,6 @@ public class WeatherActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         Intent intent;
@@ -133,7 +129,7 @@ public class WeatherActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void changeCity(String city) {
+    public void updateWeatherData(String city) {
         editCity.setText("");
         hideSoftKeyboard();
         wf.updateWeatherData(city);

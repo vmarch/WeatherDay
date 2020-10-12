@@ -8,10 +8,10 @@
     android:background="@drawable/list_grad"
     android:orientation="vertical"
     android:weightSum="1"
-    tools:context="devtolife.weatherday.menu_activities.SettingAboutAppActivity">
+    tools:context="devtolife.weatherday.menu_activities.AboutAppActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/my_toolbar"
+        android:id="@+id/my_toolbar_about_app"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorPrimary"

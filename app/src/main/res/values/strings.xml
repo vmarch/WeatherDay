@@ -25,12 +25,13 @@
     <string name="name_field_date">Date</string>
     <string name="name_field_city">City</string>
 
+<!--    <string name="context_description_arrow_back">Go back</string>-->
+
     <string-array name="languages_array">
         <item>English</item>
         <item>Deutsch</item>
         <item>Українська</item>
         <item>Русский</item>
     </string-array>
-
 
 </resources>

@@ -1,12 +1,8 @@
 package devtolife.weatherday.menu_activities;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -26,7 +22,7 @@ public class PrivacyPolicy extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.privacy);
 
-        Toolbar myToolbar = findViewById(R.id.my_toolbar);
+        Toolbar myToolbar = findViewById(R.id.my_toolbar_privacy);
         setSupportActionBar(myToolbar);
 
         myToolbar.setNavigationIcon(R.drawable.outline_arrow_back_black_24);

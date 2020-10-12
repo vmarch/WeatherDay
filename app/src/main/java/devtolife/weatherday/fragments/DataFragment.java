@@ -24,14 +24,14 @@ import devtolife.weatherday.RemoteFetch;
 
 public class DataFragment extends Fragment {
 
-    TextView dateField;
-    TextView cityField;
-    TextView temperField;
-    TextView cloudsField;
-    TextView pressureField;
-    TextView windField;
-    TextView humidityField;
-    public Locale myLocale;
+    private TextView dateField;
+    private TextView cityField;
+    private TextView temperField;
+    private TextView cloudsField;
+    private TextView pressureField;
+    private TextView windField;
+    private TextView humidityField;
+    private Locale myLocale;
     private int dayTime;
     private ImageView weatherIcon;
     private int icon;
@@ -126,7 +126,7 @@ public class DataFragment extends Fragment {
             setWeatherIcon(details.getInt("id"), dayTime);
 
             weatherIcon.setImageResource(icon);
-            temperField.setText(String.format("%.2f", main.getDouble("temp")) + "℃");
+            temperField.setText(String.format("%.1f", main.getDouble("temp")) + "℃");
             cloudsField.setText(details.getString("description").toUpperCase(Locale.US) + "");
             humidityField.setText(main.getString("humidity") + "%");
             pressureField.setText(main.getString("pressure") + " hPa");
