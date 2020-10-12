@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import devtolife.weatherday.LocaleHelper;
 import devtolife.weatherday.R;
 
 public class AboutAppActivity extends AppCompatActivity {
@@ -18,8 +19,11 @@ public class AboutAppActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
 //        mSharedPref = PreferenceManager.getDefaultSharedPreferences(this);
 //        setTheme(mSharedPref.getInt("mytheme", 0));
+
+        LocaleHelper.onAttach(this);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.about_app_layout);

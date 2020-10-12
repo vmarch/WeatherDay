@@ -33,6 +33,8 @@ public class WeatherActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
+        LocaleHelper.onAttach(this);
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_layout);
 

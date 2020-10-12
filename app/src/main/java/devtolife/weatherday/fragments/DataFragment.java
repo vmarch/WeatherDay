@@ -88,7 +88,7 @@ public class DataFragment extends Fragment {
                     handler.post(new Runnable() {
                         public void run() {
                             Toast.makeText(getActivity(),
-                                    "\"" + city + "\"" + " not found.",
+                                    "\"" + city + "\"" + " " + getString(R.string.place_not_found),
                                     Toast.LENGTH_LONG).show();
                         }
                     });

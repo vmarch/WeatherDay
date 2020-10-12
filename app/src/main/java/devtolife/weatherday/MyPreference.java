@@ -1,7 +1,9 @@
 package devtolife.weatherday;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 public class MyPreference {
 
@@ -11,7 +13,7 @@ public class MyPreference {
         prefs = activity.getPreferences(Activity.MODE_PRIVATE);
     }
 
-    // If the user has not chosen a city yet, return
+// If the user has not chosen a city yet, return
     // Kiev as the default city
 
     // English as the default language

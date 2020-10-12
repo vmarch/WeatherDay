@@ -4,7 +4,7 @@
     <string name="settings_row_name_language">Мова:</string>
     <string name="change_city">Місто</string>
     <string name="settings_row_hint_language">Оберіть мову</string>
-    <string name="place_not_found">Не знайдено</string>
+    <string name="place_not_found"> не знайдено</string>
     <string name="action_policy">Політика конфіденційності</string>
     <string name="action_about_app">Про додаток</string>
     <string name="privacy_full_eng"><![CDATA[     <p align="justify"><b>Ласкаво просимо в Політику конфіденційності мобільного додатка <a href="https://play.google.com/store/apps/details?id=devtolife.weatherday">“Weather Day”</a></b><br> <br> 	Остання зміна політики конфіденційності: 10 грудня 2017 р.<br> 	<br> 	Ми не збираємо жодної конфіденційної інформації.<br> 	<br> 	Ви можете використовувати додаток "Weather Day" на власний розсуд.<br> 	<br> 	Наша Політика конфіденційності може змінюватися час від часу. 	Ми не зменшимо ваші права згідно з цією Політикою конфіденційності без вашої явної згоди.<br> 	Ми публікуємо всі зміни політики конфіденційності у цій програмі при оновленні.    ]]></string>

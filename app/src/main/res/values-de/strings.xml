@@ -4,12 +4,12 @@
     <string name="settings_row_name_language">Sprache:</string>
     <string name="change_city">Ort</string>
     <string name="settings_row_hint_language">Die Sprachwahl</string>
-    <string name="place_not_found">kein Info</string>
+    <string name="place_not_found"> kein Info</string>
     <string name="action_policy" translatable="false">Datenschutzrichtlinie</string>
     <string name="action_about_app">Über App</string>
     <string name="privacy_full_eng"><![CDATA[     <p align="justify"><b>Welcome to the <a href="https://play.google.com/store/apps/details?id=devtolife.weatherday">“Weather Day”</a> Privacy Policy</b><br> 	<br>     Last modified: December 10, 2017.<br> 	<br>     We do not collect any confidential information.<br> 	<br> 	You can use "Weather Day" at your own discretion.<br> 	<br>     Our Privacy Policy may change from time to time.     We will not reduce your rights under this Privacy Policy without your explicit consent.<br>  <br>     We will post any privacy policy changes in this application while update.<br>     ]]></string>
     <string name="btn_update">Update</string>
-    <string name="edit_text_city">Ortsname eingeben</string>
+    <string name="edit_text_city">Ort eingeben</string>
     <string name="name_field_pressure">Luftdruck</string>
     <string name="name_field_humidity">Luftfeuchte</string>
     <string name="name_field_wind">Wind</string>

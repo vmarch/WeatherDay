@@ -8,32 +8,45 @@ import android.content.res.Resources;
 import android.os.Build;
 import android.preference.PreferenceManager;
 
+import androidx.core.os.LocaleListCompat;
+
 import java.util.Locale;
 
-public class LocaleHelper{
+public class LocaleHelper {
 
-    private static final String SELECTED_LANGUAGE = "Locale.Helper.Selected.Language";
+    private static final String SELECTED_LANGUAGE = "locale_helper_selected_language";
+
     public static Context onAttach(Context context) {
-        String lang = getPersistedData(context, Locale.getDefault().getLanguage());
-        return setLocale(context, lang);
+        String lang = getPersistedData(context, getDefaultLanguage());
+        return setLanguage(context, lang);
     }
 
-    public static Context onAttach(Context context, String defaultLanguage) {
-        String lang = getPersistedData(context, defaultLanguage);
-        return setLocale(context, lang);
+//    public static Context onAttach(Context context, String defaultLanguage) {
+//        String lang = getPersistedData(context, defaultLanguage);
+//        return setLanguage(context, lang);
+//    }
+
+    private static String getDefaultLanguage() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            return LocaleListCompat.getDefault().get(0).getLanguage();
+        } else {
+            return Locale.getDefault().getLanguage();
+        }
     }
 
     public static String getLanguage(Context context) {
-        return getPersistedData(context, Locale.getDefault().getLanguage());
+
+        return getPersistedData(context, getDefaultLanguage());
     }
-    public static Context setLocale(Context context, String language) {
-        persist(context, language);
+
+    public static Context setLanguage(Context context, String language) {
+        setPersistedData(context, language);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             return updateResources(context, language);
+        } else {
+            return updateResourcesLegacy(context, language);
         }
-
-        return updateResourcesLegacy(context, language);
     }
 
     private static String getPersistedData(Context context, String defaultLanguage) {
@@ -41,7 +54,7 @@ public class LocaleHelper{
         return preferences.getString(SELECTED_LANGUAGE, defaultLanguage);
     }
 
-    private static void persist(Context context, String language) {
+    private static void setPersistedData(Context context, String language) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = preferences.edit();
 

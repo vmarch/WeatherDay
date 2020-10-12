@@ -7,23 +7,26 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import java.util.Locale;
 
+import devtolife.weatherday.LocaleHelper;
 import devtolife.weatherday.MyPreference;
 import devtolife.weatherday.R;
 import devtolife.weatherday.WeatherActivity;
 
 public class SettingsActivity extends AppCompatActivity {
     MyPreference myPreference;
+    TextView textViewLanguage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-//        mSharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-//        setTheme(mSharedPref.getInt("mytheme", 0));
+
+        LocaleHelper.onAttach(this);
 
         myPreference = new MyPreference(this);
 
@@ -41,10 +44,9 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
-        try {
-            getSupportActionBar().setTitle("Settings");
-        } catch (Exception e) {
-        }
+        getSupportActionBar().setTitle(getString(R.string.action_settings));
+textViewLanguage = findViewById(R.id.field_name_languages);
+textViewLanguage.setText(getString(R.string.settings_row_name_language));
 
         Spinner spinnerLanguage = findViewById(R.id.spinner_languages);
         // Create an ArrayAdapter using the string array and a default spinner layout
@@ -76,12 +78,13 @@ public class SettingsActivity extends AppCompatActivity {
                 }
 
                 changeLocale(languageToLoad);
+                changeViewLanguage();
+
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
-
         });
     }
 
@@ -93,13 +96,12 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     private void changeLocale(String newLanguage) {
+        LocaleHelper.setLanguage(this, newLanguage);
 
-        Locale locale = new Locale(newLanguage);
-        Locale.setDefault(locale);
-        Configuration config = new Configuration();
-        config.locale = locale;
-        getBaseContext().getResources().updateConfiguration(config,
-                getBaseContext().getResources().getDisplayMetrics());
+    }
 
+    private void changeViewLanguage(){
+        getSupportActionBar().setTitle(getString(R.string.action_settings));
+        textViewLanguage.setText(getString(R.string.settings_row_name_language));
     }
 }
