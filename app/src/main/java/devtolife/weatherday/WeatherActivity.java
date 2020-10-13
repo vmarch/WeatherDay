@@ -28,7 +28,7 @@ public class WeatherActivity extends AppCompatActivity {
     MyPreference myPreference;
     private String city;
     String newCity;
-    DataFragment wf;
+    private DataFragment wf;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
