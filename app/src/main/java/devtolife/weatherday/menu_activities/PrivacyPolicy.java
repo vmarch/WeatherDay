@@ -15,12 +15,8 @@ import devtolife.weatherday.R;
 public class PrivacyPolicy extends AppCompatActivity implements View.OnClickListener {
     private TextView privacy;
 
-
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
-//        SharedPreferences mSharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-//        setTheme(mSharedPref.getInt("mytheme", 0));
 
         LocaleHelper.onAttach(this);
 
