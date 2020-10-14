@@ -1,5 +1,6 @@
 package devtolife.weatherday.menu_activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -11,8 +12,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
-import java.util.Locale;
 
 import devtolife.weatherday.LocaleHelper;
 import devtolife.weatherday.MyPreference;
@@ -26,8 +25,7 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-        LocaleHelper.onAttach(this);
-
+        LocaleHelper.onAttach(getBaseContext());
         myPreference = new MyPreference(this);
 
         super.onCreate(savedInstanceState);
@@ -45,8 +43,9 @@ public class SettingsActivity extends AppCompatActivity {
         });
 
         getSupportActionBar().setTitle(getString(R.string.action_settings));
-textViewLanguage = findViewById(R.id.field_name_languages);
-textViewLanguage.setText(getString(R.string.settings_row_name_language));
+
+        textViewLanguage = findViewById(R.id.field_name_languages);
+        textViewLanguage.setText(getString(R.string.settings_row_name_language));
 
         Spinner spinnerLanguage = findViewById(R.id.spinner_languages);
         // Create an ArrayAdapter using the string array and a default spinner layout
@@ -54,7 +53,6 @@ textViewLanguage.setText(getString(R.string.settings_row_name_language));
                 R.array.languages_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerLanguage.setAdapter(adapter);
-
 
         spinnerLanguage.setSelection(myPreference.getLanguage());
 
@@ -97,11 +95,25 @@ textViewLanguage.setText(getString(R.string.settings_row_name_language));
 
     private void changeLocale(String newLanguage) {
         LocaleHelper.setLanguage(this, newLanguage);
-
     }
 
-    private void changeViewLanguage(){
+    private Context setCurrentLocale(Context ctx) {
+        return LocaleHelper.onAttach(ctx);
+    }
+
+    private void changeViewLanguage() {
         getSupportActionBar().setTitle(getString(R.string.action_settings));
         textViewLanguage.setText(getString(R.string.settings_row_name_language));
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(setCurrentLocale(base));
+        applyOverrideConfiguration(new Configuration());
+    }
+
+    @Override
+    public void applyOverrideConfiguration(Configuration overrideConfiguration) {
+        super.applyOverrideConfiguration(overrideConfiguration);
     }
 }

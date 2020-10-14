@@ -7,6 +7,7 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Build;
 import android.preference.PreferenceManager;
+import android.util.Log;
 
 import androidx.core.os.LocaleListCompat;
 
@@ -27,6 +28,7 @@ public class LocaleHelper {
 //    }
 
     private static String getDefaultLanguage() {
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             return LocaleListCompat.getDefault().get(0).getLanguage();
         } else {
@@ -35,7 +37,6 @@ public class LocaleHelper {
     }
 
     public static String getLanguage(Context context) {
-
         return getPersistedData(context, getDefaultLanguage());
     }
 
@@ -57,7 +58,6 @@ public class LocaleHelper {
     private static void setPersistedData(Context context, String language) {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = preferences.edit();
-
         editor.putString(SELECTED_LANGUAGE, language);
         editor.apply();
     }
@@ -70,14 +70,18 @@ public class LocaleHelper {
         Configuration configuration = context.getResources().getConfiguration();
         configuration.setLocale(locale);
         configuration.setLayoutDirection(locale);
+        context.getResources().updateConfiguration(configuration,
+                context.getResources().getDisplayMetrics());
 
         return context.createConfigurationContext(configuration);
     }
 
     @SuppressWarnings("deprecation")
     private static Context updateResourcesLegacy(Context context, String language) {
+        Log.i("LocaleHelper", "updateResourcesLegacy ->> language = " + language);
         Locale locale = new Locale(language);
         Locale.setDefault(locale);
+        Log.i("LocaleHelper", "updateResourcesLegacy ->> locale.getLanguage() = " + locale.getLanguage());
 
         Resources resources = context.getResources();
 

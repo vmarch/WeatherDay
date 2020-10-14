@@ -1,9 +1,7 @@
 package devtolife.weatherday.menu_activities;
 
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.TextView;
 
@@ -14,14 +12,10 @@ import devtolife.weatherday.LocaleHelper;
 import devtolife.weatherday.R;
 
 public class AboutAppActivity extends AppCompatActivity {
-    SharedPreferences mSharedPref;
     TextView tv_version;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-//        mSharedPref = PreferenceManager.getDefaultSharedPreferences(this);
-//        setTheme(mSharedPref.getInt("mytheme", 0));
 
         LocaleHelper.onAttach(this);
 
@@ -41,7 +35,7 @@ public class AboutAppActivity extends AppCompatActivity {
         });
 
         try {
-            getSupportActionBar().setTitle("About Application");
+            getSupportActionBar().setTitle(getString(R.string.action_about_app));
         } catch (Exception e) {
         }
 
