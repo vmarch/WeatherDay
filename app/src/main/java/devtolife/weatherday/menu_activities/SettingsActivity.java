@@ -19,13 +19,16 @@ import devtolife.weatherday.R;
 import devtolife.weatherday.WeatherActivity;
 
 public class SettingsActivity extends AppCompatActivity {
-    MyPreference myPreference;
-    TextView textViewLanguage;
+    private MyPreference myPreference;
+    private TextView textViewLanguage;
+    private String firstLanguage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         LocaleHelper.onAttach(getBaseContext());
+        firstLanguage = LocaleHelper.getLanguage(getBaseContext());
+
         myPreference = new MyPreference(this);
 
         super.onCreate(savedInstanceState);
@@ -74,10 +77,8 @@ public class SettingsActivity extends AppCompatActivity {
                 } else {
                     languageToLoad = "en";
                 }
-
-                changeLocale(languageToLoad);
-                changeViewLanguage();
-
+                    changeLocale(languageToLoad);
+                    changeViewLanguage();
             }
 
             @Override
@@ -87,9 +88,11 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     private void startWithRefresh() {
-        Intent refresh = new Intent(SettingsActivity.this, WeatherActivity.class);
-        refresh.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(refresh);
+        if (!firstLanguage.equals(LocaleHelper.getLanguage(getBaseContext()))) {
+            Intent refresh = new Intent(SettingsActivity.this, WeatherActivity.class);
+            refresh.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(refresh);
+        }
         finish();
     }
 
@@ -115,5 +118,11 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     public void applyOverrideConfiguration(Configuration overrideConfiguration) {
         super.applyOverrideConfiguration(overrideConfiguration);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startWithRefresh();
     }
 }
